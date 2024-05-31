@@ -7,6 +7,7 @@ import {
   Container,
   Info,
   OderButton,
+  CardsContianer,
 } from "../../../components/general-css/GeneralStyles";
 import { Project } from "../../../types/types";
 
@@ -44,24 +45,26 @@ export default function viewProject() {
       <Container>
         <h1>Översikt Projekt</h1>
         {message.length > 0 ? <p>{message}</p> : null}
-        {projects !== null &&
-          projects.map((project: Project) => (
-            <Card key={project.project_id}>
-              <h2>Namn: {project.name}</h2>
-              <Img
-                src={`http://localhost:8080${project.image}`}
-                alt="bild på projektet"
-              />
-              <Info>Beskrivning: {project.description}</Info>
-              <OderButton
-                type="button"
-                value="Ta bort projekt"
-                onClick={() => {
-                  handleClick(project);
-                }}
-              />
-            </Card>
-          ))}
+        <CardsContianer>
+          {projects !== null &&
+            projects.map((project: Project) => (
+              <Card key={project.project_id}>
+                <h2>Namn: {project.name}</h2>
+                <Img
+                  src={`http://localhost:8080${project.image}`}
+                  alt="bild på projektet"
+                />
+                <Info>Beskrivning: {project.description}</Info>
+                <OderButton
+                  type="button"
+                  value="Ta bort projekt"
+                  onClick={() => {
+                    handleClick(project);
+                  }}
+                />
+              </Card>
+            ))}
+        </CardsContianer>
       </Container>
     </>
   );
