@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  background-color: #faebd7;
+}
+
+main {
+  width: 60vw;
+  margin: 2rem auto;
+  min-height: 100vh; /*för att alltid få footern längst ner på vh*/
+}
+
+h1 {
+  font-family: "Italianno", cursive;
+  color: #282222;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+p,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Alegreya Sans";
+}
+
+footer {
+  background: rgb(166, 214, 213);
+  background: linear-gradient(
+    0deg,
+    rgba(166, 214, 213, 1) 0%,
+    rgba(166, 214, 213, 1) 54%,
+    rgba(250, 235, 215, 1) 68%
+  );
+  height: 15em;
+}
+
+/* stylar toaster när man lägger till vara */
+.Toastify__toast-container {
+  background-color: transparent !important;
+}
+
+.Toastify__toast {
+  background-color: #faebd7 !important;
+}
