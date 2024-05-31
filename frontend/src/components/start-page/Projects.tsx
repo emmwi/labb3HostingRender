@@ -1,5 +1,11 @@
 "use client";
-import { Card, Img, Container, Info } from "../general-css/GeneralStyles";
+import {
+  Card,
+  Img,
+  Container,
+  Info,
+  CardsContianer,
+} from "../general-css/GeneralStyles";
 import { useEffect, useState } from "react";
 import { Project } from "../../types/types";
 
@@ -19,17 +25,19 @@ export default function projects() {
       <Container>
         <h1>Tidigare Projekt</h1>
         <p>Här kan man se några av de projekt jag tidigare gjort</p>
-        {projects !== null &&
-          projects.map((project: Project) => (
-            <Card key={project.project_id}>
-              <h2>{project.name}</h2>
-              <Img
-                src={`http://localhost:8080${project.image}`}
-                alt="bild på projektet"
-              />
-              <Info>{project.description}</Info>
-            </Card>
-          ))}
+        <CardsContianer>
+          {projects !== null &&
+            projects.map((project: Project) => (
+              <Card key={project.project_id}>
+                <h2>{project.name}</h2>
+                <Img
+                  src={`http://localhost:8080${project.image}`}
+                  alt="bild på projektet"
+                />
+                <Info>{project.description}</Info>
+              </Card>
+            ))}
+        </CardsContianer>
       </Container>
     </>
   );

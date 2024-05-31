@@ -11,6 +11,7 @@ import {
   Info,
   OderButton,
   Price,
+  CardsContianer,
 } from "../general-css/GeneralStyles";
 import { Item } from "../../types/types";
 
@@ -56,30 +57,32 @@ export default function OrderProduct() {
       <Container>
         <h1>Stickade plagg</h1>
         <ToastContainer />
-        {items !== null &&
-          items.map((item: Item) => (
-            <Card key={item.item_id}>
-              <h2>{item.name}</h2>
-              <Img
-                src={`http://localhost:8080${item.image}`}
-                alt="bild på projektet"
-              />
-              <Info>{item.description},</Info>
-              <Price>{item.price} kr</Price>
-              {/* avvaktiverar knappen och ändrar den till 'slut i lager' om det item man klickar på har samma id som något av de items som finns i cartitems eller outofstock */}
-              {![...cartItems, ...outOfStock].find(
-                (cartItem) => cartItem.item_id === item.item_id
-              ) ? (
-                <OderButton
-                  type="button"
-                  value="Handla"
-                  onClick={() => handleClick(item)}
+        <CardsContianer>
+          {items !== null &&
+            items.map((item: Item) => (
+              <Card key={item.item_id}>
+                <h2>{item.name}</h2>
+                <Img
+                  src={`http://localhost:8080${item.image}`}
+                  alt="bild på projektet"
                 />
-              ) : (
-                <OderButton type="button" value="Slut i lager" disabled />
-              )}
-            </Card>
-          ))}
+                <Info>{item.description}</Info>
+                <Price>{item.price} kr</Price>
+                {/* avvaktiverar knappen och ändrar den till 'slut i lager' om det item man klickar på har samma id som något av de items som finns i cartitems eller outofstock */}
+                {![...cartItems, ...outOfStock].find(
+                  (cartItem) => cartItem.item_id === item.item_id
+                ) ? (
+                  <OderButton
+                    type="button"
+                    value="Handla"
+                    onClick={() => handleClick(item)}
+                  />
+                ) : (
+                  <OderButton type="button" value="Slut i lager" disabled />
+                )}
+              </Card>
+            ))}
+        </CardsContianer>
       </Container>
     </>
   );
